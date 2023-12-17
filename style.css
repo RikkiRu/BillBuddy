@@ -75,18 +75,22 @@ body {
 }
 
 #historyModal .modal-content {
-    width: 50%; /* Измените размер в соответствии с вашими предпочтениями */
+    width: 50%;
 }
 
 #historyList {
-    max-height: 300px; /* Измените высоту в соответствии с вашими предпочтениями */
+    max-height: 300px;
     overflow-y: auto;
     margin-bottom: 20px;
     border: 1px solid #ddd;
     padding: 10px;
 }
 
-/* Стили для закрытия модального окна истории */
 .close-history {
-    /* Похожие стили на .close, возможно, с некоторыми изменениями */
+}
+
+input[type="checkbox"] {
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+    transform: scale(1.5); /* Standard syntax */
+    margin-right: 5px;
 }
