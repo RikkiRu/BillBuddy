@@ -9,7 +9,7 @@
     <div class="container">
         <div class="balance-display">Balance: <span id="balanceDisplay">0</span></div>
         <button id="settingsButton" class="btn-settings">Setup</button>
-		<button id="historyButton" class="btn-settings">History</button>
+        <button id="historyButton" class="btn-settings">History</button>
 
         <div id="settingsModal" class="modal">
             <div class="modal-content">
@@ -25,13 +25,13 @@
                 <h3>Balance: <span id="balanceDisplayModal"></span></h3>
                 <input type="number" id="balanceInput" placeholder="Set balance" class="input-field">
                 <button id="updateBalanceButton" class="btn">Update</button>
-				
-				<input type="number" id="tipPercentage" placeholder="Tips (%)" class="input-field" min="0" value="0">
-				<button id="updateTipButton" class="btn">Update Tips</button>
+                
+                <input type="number" id="tipPercentage" placeholder="Tips (%)" class="input-field" min="0" value="0">
+                <button id="updateTipButton" class="btn">Update Tips</button>
             </div>
         </div>
-		
-		 <div id="historyModal" class="modal">
+        
+         <div id="historyModal" class="modal">
             <div class="modal-content">
                 <span class="close-history">&times;</span>
                 <h2>History</h2>
@@ -43,12 +43,12 @@
 
         <div class="items-section" id="itemsList">
         </div>
-		
-		<div>
-			<input type="checkbox" id="applyTip">
-			<label for="applyTip">Tips: <span id="tipDisplay">0%</span></label>
-		</div>
-		
+        
+        <div>
+            <input type="checkbox" id="applyTip">
+            <label for="applyTip">Tips: <span id="tipDisplay">0%</span></label>
+        </div>
+        
         <button id="calculateTotalButton" class="btn">Calculate</button>
         <div id="total" class="total-display">Sum: 0</div>
         <button id="subtractFromBalanceButton" class="btn">Pay</button>

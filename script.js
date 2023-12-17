@@ -56,7 +56,7 @@ function loadItems() {
         checkbox.dataset.people = item.people;
 
         var label = document.createElement('label');
-        label.textContent = item.name + ' (' + item.price + ')';
+        label.textContent = item.name + ' (' + item.price + ') / ';
 
         var peopleInput = document.createElement('input');
         peopleInput.type = 'number';
@@ -66,10 +66,29 @@ function loadItems() {
         peopleInput.onchange = function() {
             updateItemPeople(index, peopleInput.value);
         };
+        
+        var labelQuantity = document.createElement('label');
+        labelQuantity.textContent = ' quantity ';
+        
+        var quantityInput = document.createElement('input');
+        quantityInput.type = 'number';
+        quantityInput.className = 'quantity';
+        
+        if (Number.isInteger(item.quantity))
+            quantityInput.value = item.quantity;
+        else
+            quantityInput.value = 1;
+    
+        quantityInput.min = 1;
+        quantityInput.onchange = function() {
+            updateItemQuantity(index, quantityInput.value);
+        };
 
         div.appendChild(checkbox);
         div.appendChild(label);
         div.appendChild(peopleInput);
+        div.appendChild(labelQuantity);
+        div.appendChild(quantityInput);
         itemsList.appendChild(div);
     });
 }
@@ -81,7 +100,7 @@ function addNewItem() {
 
     if (name && price) {
         var items = JSON.parse(localStorage.getItem('items') || '[]');
-        items.push({ name: name, price: parseFloat(price), people: parseInt(people) });
+        items.push({ name: name, price: parseFloat(price), people: parseInt(people), quantity: 1 });
         localStorage.setItem('items', JSON.stringify(items));
         loadItems();
         loadSettingsItems();
@@ -105,7 +124,7 @@ function loadSettingsItems() {
             deleteItem(index);
         };
 
-		div.appendChild(deleteButton);
+        div.appendChild(deleteButton);
         div.appendChild(span);
         
         settingsList.appendChild(div);
@@ -146,10 +165,13 @@ function calculateTotal() {
     items.forEach(function(div) {
         var checkbox = div.querySelector('input[type=checkbox]');
         var peopleInput = div.querySelector('.people-count');
+        var quantityInput = div.querySelector('.quantity');
+        
         if (checkbox.checked) {
             var price = parseFloat(checkbox.dataset.price);
             var people = parseInt(peopleInput.value) || 1;
-            total += price / people;
+            var quantity = parseInt(quantityInput.value) || 1;
+            total += price / people * quantity;
         }
     });
     return total;
@@ -184,7 +206,8 @@ function saveTransaction(total) {
                             .map(div => {
                                 var label = div.querySelector('label').textContent;
                                 var peopleCount = div.querySelector('.people-count').value;
-                                return `${label} / ${peopleCount}`;
+                                var quantity = div.querySelector('.quantity').value;
+                                return `${label} / ${peopleCount} * ${quantity}`;
                             });
 
     if (document.getElementById('applyTip').checked) {
@@ -224,6 +247,15 @@ function updateItemPeople(index, newPeople) {
     var items = JSON.parse(localStorage.getItem('items') || '[]');
     if (items[index]) {
         items[index].people = parseInt(newPeople);
+        localStorage.setItem('items', JSON.stringify(items));
+        loadItems();
+    }
+}
+
+function updateItemQuantity(index, newQuantity) {
+    var items = JSON.parse(localStorage.getItem('items') || '[]');
+    if (items[index]) {
+        items[index].quantity = parseInt(newQuantity);
         localStorage.setItem('items', JSON.stringify(items));
         loadItems();
     }
