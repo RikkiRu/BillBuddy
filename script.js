@@ -58,7 +58,7 @@ function loadItems() {
         var space1 = document.createElement('label');
         space1.textContent = ' ';
         var space2 = document.createElement('label');
-        space2.textContent = ' ';
+        space2.textContent = ' people ';
         var space3 = document.createElement('label');
         space3.textContent = ' ';
 
@@ -75,7 +75,7 @@ function loadItems() {
         };
         
         var labelQuantity = document.createElement('label');
-        labelQuantity.textContent = ' quantity ';
+        labelQuantity.textContent = ' quantity x';
         
         var quantityInput = document.createElement('input');
         quantityInput.type = 'number';

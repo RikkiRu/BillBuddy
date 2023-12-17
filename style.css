@@ -93,15 +93,20 @@ body {
 }
 
 input[type="checkbox"] {
-    -webkit-transform: scale(2); /* Chrome, Safari, Opera */
-    transform: scale(2); /* Standard syntax */
-    margin-right: 15px;
+    -webkit-transform: scale(4); /* Chrome, Safari, Opera */
+    transform: scale(4); /* Standard syntax */
+    margin-right: 30px;
+}
+
+input[type="number"] {
+     font-size: 24px;
 }
 
 div {
-    padding: 15px; /* Увеличенные отступы для лучшего восприятия */
-    margin-bottom: 15px; /* Отступ снизу для разделения между элементами */
-    background-color: #f9f9f9; /* Светлый фон для читаемости */
-    border-radius: 6px; /* Скругленные углы для современного вида */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень для визуального выделения */
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 24px;
 }
