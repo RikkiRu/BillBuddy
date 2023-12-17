@@ -1,23 +1,25 @@
 body {
     font-family: Arial, sans-serif;
+    font-size: 16px;
 }
 
 .container {
-    width: 80%;
-    margin: 0 auto;
+    width: 95%;
+    margin: 10px auto;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .input-field, .btn, .btn-settings {
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 4px;
+    padding: 15px;
+    margin: 15px 0;
+    font-size: 18px;
+    border-radius: 6px;
 }
 
 .input-field {
     border: 1px solid #ddd;
-    width: calc(100% - 22px);
+    width: calc(100% - 32px);
 }
 
 .btn, .btn-settings {
@@ -35,8 +37,8 @@ body {
 .total-display, .modal-content {
     background-color: #f2f2f2;
     border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 4px;
+    padding: 15px;
+    border-radius: 6px;
 }
 
 .modal {
@@ -52,16 +54,17 @@ body {
 }
 
 .modal-content {
-    margin: 15% auto;
-    width: 30%;
+    margin: 10% auto;
+    padding: 20px;
+    width: 90%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 10px;
 }
 
 .close {
     color: #aaa;
     float: right;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 32px;
 }
 
 .close:hover, .close:focus {
@@ -74,8 +77,8 @@ body {
     margin: 20px 0;
 }
 
-#historyModal .modal-content {
-    width: 50%;
+#historyModal .modal-content, #settingsModal .modal-content {
+    width: 90%;
 }
 
 #historyList {
@@ -90,7 +93,15 @@ body {
 }
 
 input[type="checkbox"] {
-    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
-    transform: scale(1.5); /* Standard syntax */
-    margin-right: 5px;
+    -webkit-transform: scale(2); /* Chrome, Safari, Opera */
+    transform: scale(2); /* Standard syntax */
+    margin-right: 15px;
+}
+
+div {
+    padding: 15px; /* Увеличенные отступы для лучшего восприятия */
+    margin-bottom: 15px; /* Отступ снизу для разделения между элементами */
+    background-color: #f9f9f9; /* Светлый фон для читаемости */
+    border-radius: 6px; /* Скругленные углы для современного вида */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень для визуального выделения */
 }

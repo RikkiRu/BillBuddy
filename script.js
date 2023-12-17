@@ -55,8 +55,15 @@ function loadItems() {
         checkbox.dataset.price = item.price;
         checkbox.dataset.people = item.people;
 
+        var space1 = document.createElement('label');
+        space1.textContent = ' ';
+        var space2 = document.createElement('label');
+        space2.textContent = ' ';
+        var space3 = document.createElement('label');
+        space3.textContent = ' ';
+
         var label = document.createElement('label');
-        label.textContent = item.name + ' (' + item.price + ') / ';
+        label.textContent = item.name + ' (' + item.price + ')';
 
         var peopleInput = document.createElement('input');
         peopleInput.type = 'number';
@@ -85,8 +92,11 @@ function loadItems() {
         };
 
         div.appendChild(checkbox);
+        div.appendChild(space1);
         div.appendChild(label);
+        div.appendChild(space2);
         div.appendChild(peopleInput);
+        div.appendChild(space3);
         div.appendChild(labelQuantity);
         div.appendChild(quantityInput);
         itemsList.appendChild(div);
@@ -207,7 +217,7 @@ function saveTransaction(total) {
                                 var label = div.querySelector('label').textContent;
                                 var peopleCount = div.querySelector('.people-count').value;
                                 var quantity = div.querySelector('.quantity').value;
-                                return `${label} / ${peopleCount} * ${quantity}`;
+                                return `${label} for ${peopleCount} x${quantity}`;
                             });
 
     if (document.getElementById('applyTip').checked) {
