@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор Суммы Чека</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <button id="settingsButton" class="btn-settings">Настроить</button>
+
+        <div id="settingsModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Настройки</h2>
+                <input type="text" id="newItemName" placeholder="Название товара или услуги" class="input-field">
+                <input type="number" id="newItemPrice" placeholder="Цена" class="input-field">
+                <button id="addNewItemButton" class="btn">Добавить</button>
+            </div>
+        </div>
+
+        <div class="items-section" id="itemsList">
+            <!-- Динамически добавляемые элементы будут здесь -->
+        </div>
+        <button id="calculateTotalButton" class="btn">Подсчитать сумму</button>
+        <div id="total" class="total-display">Итоговая сумма: 0 руб.</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
