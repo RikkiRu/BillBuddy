@@ -1,23 +1,39 @@
 document.addEventListener('DOMContentLoaded', function() {
     loadItems();
     loadBalance();
+    loadHistory();
 
     var modal = document.getElementById("settingsModal");
+    var historyModal = document.getElementById("historyModal");
     var btn = document.getElementById("settingsButton");
+    var historyBtn = document.getElementById("historyButton");
     var span = document.getElementsByClassName("close")[0];
+    var closeHistorySpan = document.getElementsByClassName("close-history")[0];
 
     btn.onclick = function() {
         modal.style.display = "block";
         loadSettingsItems();
     }
 
+    historyBtn.onclick = function() {
+        historyModal.style.display = "block";
+        loadHistory();
+    }
+
     span.onclick = function() {
         modal.style.display = "none";
+    }
+
+    closeHistorySpan.onclick = function() {
+        historyModal.style.display = "none";
     }
 
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+        }
+        if (event.target == historyModal) {
+            historyModal.style.display = "none";
         }
     }
 
@@ -52,7 +68,14 @@ document.addEventListener('DOMContentLoaded', function() {
         var balance = parseFloat(localStorage.getItem('balance') || 0);
         balance -= total;
         localStorage.setItem('balance', balance);
+        saveTransaction(total);
         loadBalance();
+        loadHistory();
+    }
+
+    document.getElementById("clearHistoryButton").onclick = function() {
+        localStorage.setItem('history', JSON.stringify([]));
+        loadHistory();
     }
 });
 
@@ -146,4 +169,30 @@ function updateItemPeople(index, newPeople) {
         localStorage.setItem('items', JSON.stringify(items));
         loadItems();
     }
+}
+
+function loadHistory() {
+    var history = JSON.parse(localStorage.getItem('history') || '[]');
+    var historyList = document.getElementById('historyList');
+    historyList.innerHTML = '';
+    history.forEach(function(entry) {
+        var div = document.createElement('div');
+        div.textContent = `${entry.date}: ${entry.total} руб. - [${entry.items.join(', ')}]`;
+        historyList.appendChild(div);
+    });
+}
+
+function saveTransaction(total) {
+    var history = JSON.parse(localStorage.getItem('history') || '[]');
+    var date = new Date().toLocaleString();
+    var involvedItems = Array.from(document.querySelectorAll('#itemsList div'))
+                            .filter(div => div.querySelector('input[type=checkbox]').checked)
+                            .map(div => {
+                                var label = div.querySelector('label').textContent;
+                                var peopleCount = div.querySelector('.people-count').value;
+                                return `${label} на ${peopleCount} чел.`;
+                            });
+
+    history.push({ date: date, total: total.toFixed(2), items: involvedItems });
+    localStorage.setItem('history', JSON.stringify(history));
 }

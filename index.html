@@ -9,6 +9,7 @@
     <div class="container">
         <div class="balance-display">Текущий баланс: <span id="balanceDisplay">0</span> руб.</div>
         <button id="settingsButton" class="btn-settings">Настроить</button>
+		<button id="historyButton" class="btn-settings">История</button>
 
         <div id="settingsModal" class="modal">
             <div class="modal-content">
@@ -25,6 +26,17 @@
                 <h3>Баланс: <span id="balanceDisplayModal"></span> руб.</h3>
                 <input type="number" id="balanceInput" placeholder="Новый баланс" class="input-field">
                 <button id="updateBalanceButton" class="btn">Обновить баланс</button>
+            </div>
+        </div>
+		
+		 <div id="historyModal" class="modal">
+            <div class="modal-content">
+                <span class="close-history">&times;</span>
+                <h2>История</h2>
+                <div id="historyList">
+                    <!-- Здесь будет отображаться история -->
+                </div>
+                <button id="clearHistoryButton" class="btn">Очистить историю</button>
             </div>
         </div>
 
