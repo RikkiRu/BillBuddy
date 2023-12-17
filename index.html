@@ -7,23 +7,32 @@
 </head>
 <body>
     <div class="container">
+        <div class="balance-display">Текущий баланс: <span id="balanceDisplay">0</span> руб.</div>
         <button id="settingsButton" class="btn-settings">Настроить</button>
 
         <div id="settingsModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h2>Настройки</h2>
+                <div id="settingsList">
+                    <!-- Динамически добавляемые элементы настроек будут здесь -->
+                </div>
                 <input type="text" id="newItemName" placeholder="Название товара или услуги" class="input-field">
                 <input type="number" id="newItemPrice" placeholder="Цена" class="input-field">
                 <button id="addNewItemButton" class="btn">Добавить</button>
+                
+                <h3>Баланс: <span id="balanceDisplayModal"></span> руб.</h3>
+                <input type="number" id="balanceInput" placeholder="Новый баланс" class="input-field">
+                <button id="updateBalanceButton" class="btn">Обновить баланс</button>
             </div>
         </div>
 
         <div class="items-section" id="itemsList">
-            <!-- Динамически добавляемые элементы будут здесь -->
+            <!-- Динамически добавляемые элементы для выбора будут здесь -->
         </div>
         <button id="calculateTotalButton" class="btn">Подсчитать сумму</button>
         <div id="total" class="total-display">Итоговая сумма: 0 руб.</div>
+        <button id="subtractFromBalanceButton" class="btn">Вычесть из баланса</button>
     </div>
     <script src="script.js"></script>
 </body>
