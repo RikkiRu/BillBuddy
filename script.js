@@ -58,12 +58,13 @@ function loadItems() {
         var space1 = document.createElement('label');
         space1.textContent = ' ';
         var space2 = document.createElement('label');
-        space2.textContent = ' people ';
+        space2.textContent = ' for ';
         var space3 = document.createElement('label');
         space3.textContent = ' ';
 
         var label = document.createElement('label');
         label.textContent = item.name + ' (' + item.price + ')';
+        label.className = 'itemDescription';
 
         var peopleInput = document.createElement('input');
         peopleInput.type = 'number';
@@ -75,7 +76,7 @@ function loadItems() {
         };
         
         var labelQuantity = document.createElement('label');
-        labelQuantity.textContent = ' quantity x';
+        labelQuantity.textContent = ' x';
         
         var quantityInput = document.createElement('input');
         quantityInput.type = 'number';
@@ -214,7 +215,7 @@ function saveTransaction(total) {
     var involvedItems = Array.from(document.querySelectorAll('#itemsList div'))
                             .filter(div => div.querySelector('input[type=checkbox]').checked)
                             .map(div => {
-                                var label = div.querySelector('label').textContent;
+                                var label = div.querySelector('.itemDescription').textContent;
                                 var peopleCount = div.querySelector('.people-count').value;
                                 var quantity = div.querySelector('.quantity').value;
                                 return `${label} for ${peopleCount} x${quantity}`;
